@@ -37,10 +37,20 @@ const Text = styled(Typography)`
   font-size: 16px;
   text-align:center;
 `;
+const signupInitialValues = {
+  name:'',
+  username:'',
+  password:''
+}
 const Login = () => {
   const [account, toggleAccount] = useState("login");
+  const [signup, setSignup] = useState(signupInitialValues);
     const toggleSignup= ()=>{
         account==='login'?toggleAccount('signup'):toggleAccount('login');
+    }
+
+    const onInputChange = (e)=>{
+      setSignup({...signup,[e.target.name]:e.target.value});
     }
   return (
     
@@ -56,9 +66,9 @@ const Login = () => {
         </Wrapper>
       ) : (
         <Wrapper>
-          <TextField variant="standard" placeholder="Enter name" />
-          <TextField variant="standard" placeholder="Enter username" />
-          <TextField variant="standard" placeholder="Enter password" />
+          <TextField variant="standard" onChange={(e)=>onInputChange(e)} name="name" placeholder="Enter name" />
+          <TextField variant="standard" onChange={(e)=>onInputChange(e)} name="username" placeholder="Enter username" />
+          <TextField variant="standard" onChange={(e)=>onInputChange(e)} name="password" placeholder="Enter password" />
           <SignupButton>Sign Up</SignupButton>
           <Text>OR</Text>
           <LoginButton variant="contained" onClick={()=>toggleSignup()}>
