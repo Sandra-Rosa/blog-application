@@ -7,7 +7,7 @@ const app = express();
 app.use('/',Router);
 const PORT= 8000;
 app.listen(PORT,()=>{
-    console.log(`listening on port Hello ${PORT}`)
+    console.log(`listening on port ${PORT}`)
 })
 
 Connection()
